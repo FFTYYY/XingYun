@@ -1,4 +1,4 @@
-# XingYun
+# XingYun （行雲）
 
 XingYun is a package that helps store data , code and log to cloud and manage them. Tastes better if consumed together with [EgorovSystem](https://github.com/FFTYYY/EgorovSystem/tree/main).
 
@@ -9,9 +9,9 @@ XingYun is a package that helps store data , code and log to cloud and manage th
 Before use, better to set up [EgorovSystem](https://github.com/FFTYYY/EgorovSystem/tree/main) and set values for the following entries: `aws_access`, `xingyun-getid`, `xingyun-GlobalDataManager`.
 
 
-## Usage
+## Example
 
-Below is an example.
+Below is an example for usage. For more advanced usage see [doc](https://fftyyy.github.io/XingYun/)
 
 __project 1__
 ```python
@@ -53,4 +53,3 @@ assert G.get("a") == 1919810
 assert G.get("a", time_stamp = 0) = 114514
 ```
 
-For more advanced usage see [doc](./doc/xingyun/index.html)
