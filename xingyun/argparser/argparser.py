@@ -29,12 +29,12 @@ class Condition:
 
 condition_env = {}
 class PreCondition:
-    def __init__(self, cond: Condition | Callable[[ dict[str, Any] ], bool]):
+    def __init__(self, dependence_list: list [str], cond: Callable[... , bool]):
 
-        if not isinstance(cond, Condition):
-            cond = Condition(cond)
+        cond_exists = Condition(lambda C: not (False in [x in C for x in dependence_list]) )
+        cond_user   = Condition(lambda C: cond(*[C[x] for x in dependence_list]))
 
-        self.cond = cond
+        self.cond = cond_exists & cond_user
         self.id = my_randint(0,2333333)
     def __enter__(self):
         condition_env[self.id] = self.cond
@@ -105,6 +105,12 @@ class ArgumentParser:
         if isinstance(C, Namespace):
             C = C.__dict__
         return get_subdict(C,prefix,splitter)
+
+    def set_arg(self, name: str, key: str, val: Any):
+        '''set properties of an argument'''
+        arg = self.arguments.get(name)
+        if arg is not None:
+            arg.__dict__[key] = val
 
     def add_alias(self, alias: str, original: str):
         '''add an alias for an argument.'''
@@ -212,6 +218,12 @@ class ArgumentParser:
                 break
             now_len = new_len
 
+            # update all alias into the parsed
+            for alias, name in self.alias.items():
+                if name in parsed:
+                    parsed[alias] = parsed[name]
+
+
         if _t >= 98:
             warnings.warn("Too deep nested logic. Only performed 100 iterations.")
         
@@ -219,6 +231,11 @@ class ArgumentParser:
         for name in self.arguments:
             if not (name in parsed):
                 parsed[name] = None 
+
+        # update all alias into the parsed
+        for alias, name in self.alias.items():
+            if name in parsed:
+                parsed[alias] = parsed[name]
 
         return MyDict(parsed)
 

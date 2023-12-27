@@ -11,10 +11,10 @@ def make_parser():
 
     argp.add_argument("model/num_layers", type = int, default = 12  , aliases = ["num_layers"])
 
-    with PreCondition(lambda C: C["model/model"] in ["TWIRLS" , "UGNN", "IGNN"]):
+    with PreCondition(["model"], lambda model: model in ["TWIRLS" , "UGNN", "IGNN"]):
         argp.add_argument("model/GNN-spec/prop_method", type = str, default = "message", verify = lambda v: v in ["message", "identity"]  )
 
-    with PreCondition(lambda C: C["model/model"] in ["CNN"]):
+    with PreCondition(["model"], lambda model: model in ["CNN"]):
         argp.add_bool    ("model/CNN-spec/bn")
     
 
@@ -26,9 +26,6 @@ def make_parser():
     argp.add_bool    ("no_activation")
 
     return argp
-
-
-
 
 class TestArgParser(unittest.TestCase):
     def setUp(self) -> None:
@@ -51,6 +48,7 @@ class TestArgParser(unittest.TestCase):
         print (C.sub("model"))
 
         self.assertTrue( C.sub("model")["model"] == "UGNN" )
+        self.assertTrue( C["model"] == "UGNN" )
         self.assertTrue( C.sub("model")["num_layers"] == 3 )
         self.assertTrue( C.sub("model")["GNN-spec/prop_method"] == "message" )
         self.assertTrue( C.sub("model")["CNN-spec/bn"] is None )
