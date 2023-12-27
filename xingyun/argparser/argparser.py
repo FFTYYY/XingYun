@@ -176,7 +176,7 @@ class ArgumentParser:
                 val = arg.present
 
             # record name, val pair
-            name_vals[name] = val
+            name_vals[name] = arg.type(val)
         
         # apply default val
         for name , arg in self.arguments.items():
@@ -200,7 +200,7 @@ class ArgumentParser:
                     continue
                 
                 # store value
-                parsed[name] = arg.type(val)
+                parsed[name] = val
 
                 # check post condition
                 if not arg.post_condition.test(parsed):
