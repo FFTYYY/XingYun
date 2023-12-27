@@ -17,7 +17,7 @@ pkgs = [p for p in find_packages() if p.startswith("xingyun")]
 
 setup(
     name="xingyun",
-    version="0.0.8-post3",
+    version="0.0.8-post4",
     url="http://github.com/FFTYYY/XingYun",
     description="",
     long_description=readme,
@@ -25,7 +25,7 @@ setup(
     license="MIT",
     author = "Yongyi Yang",
 	author_email = "yongyi@umich.edu",
-    python_requires = ">=3.9",
+    python_requires = ">=3.10",
     packages = pkgs,
     install_requires = reqs.strip().split("\n"),
 
