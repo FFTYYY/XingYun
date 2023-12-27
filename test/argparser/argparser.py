@@ -9,7 +9,7 @@ def make_parser():
     argp.add_argument("model/model"     , type = str, default = "TWIRLS", verify = lambda v: v in ["TWIRLS", "UGNN", "IGNN", "CNN"] )
     argp.add_alias   ("model" , "model/model")
 
-    argp.add_argument("model/num_layers", type = int, default = 12  )
+    argp.add_argument("model/num_layers", type = int, default = 12  , aliases = ["num_layers"])
 
     with PreCondition(lambda C: C["model/model"] in ["TWIRLS" , "UGNN", "IGNN"]):
         argp.add_argument("model/GNN-spec/prop_method", type = str, default = "message", verify = lambda v: v in ["message", "identity"]  )
@@ -38,7 +38,7 @@ class TestArgParser(unittest.TestCase):
     def test_main(self):
         argv = [
             "--model=UGNN" , 
-            "--model/num_layers=3", 
+            "--num_layers=3", 
             "--model/GNN-spec/prop_method=message", 
             "--model/CNN-spec/bn", 
             "--optim/lr=0.1", 
@@ -74,7 +74,7 @@ class TestArgParser(unittest.TestCase):
     def test_default(self):
         argv = [
             "--model=CNN" , 
-            "--model/num_layers=12", 
+            "--num_layers=12", 
             "--model/GNN-spec/prop_method=UGNN_message", 
             "--model/CNN-spec/bn", 
             "--optim/lr=0.1", 

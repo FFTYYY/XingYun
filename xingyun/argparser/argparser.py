@@ -117,9 +117,12 @@ class ArgumentParser:
         present: Any = None, 
         help: str = "" , 
         verify : Callable[ [Any] , bool] = lambda _: True ,
+        aliases: list[str] = []
     ):
         post_cond = Condition(lambda C: verify(C.get(name)))
         self.arguments[name] = Argument(name, type, default, present, help, Condition.and_all(self.now_preconds), post_cond)
+        for alias in aliases:
+            self.add_alias(alias, name)
 
     def add_bool(self, 
         name: str, 
