@@ -11,7 +11,7 @@ Before use, better to set up [EgorovSystem](https://github.com/FFTYYY/EgorovSyst
 
 ## Example
 
-Below is an example for usage. For more advanced usage see [doc](https://fftyyy.github.io/XingYun/)
+Below is an example for usage. For more advanced usage see [doc](https://fftyyy.github.io/XingYun/).
 
 __project 1__
 ```python
