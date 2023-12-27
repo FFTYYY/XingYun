@@ -1,7 +1,7 @@
 import random
 import torch
 from xingyun.random.set_random_seed import set_random_seed
-from xingyun.random.my_random import MyRandom
+from xingyun.random.fix_random import FixRandom
 import unittest
 
 def randomint():
@@ -17,7 +17,7 @@ class TestMyRandom(unittest.TestCase):
 
         set_random_seed(2333)
         rn_3 = randomint()
-        with MyRandom():
+        with FixRandom():
             rand_list = [randomint() for _ in range(10)]
         rn_4 = randomint()
 

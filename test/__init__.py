@@ -4,6 +4,7 @@ from .random import *
 from .time import *
 from .cloud import *
 from .logger import *
+from .argparser import * 
 
 if __name__ == "__main__":
     testsuite = unittest.TestLoader().discover(".")

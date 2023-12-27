@@ -1,1 +1,1 @@
-from .my_random import *
+from .fix_random import *
