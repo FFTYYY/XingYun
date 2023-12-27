@@ -117,7 +117,7 @@ class ArgumentParser:
         present: Any = None, 
         help: str = "" , 
         verify : Callable[ [Any] , bool] = lambda _: True ,
-        aliases: list[str] = []
+        aliases: list[str] = [] , 
     ):
         post_cond = Condition(lambda C: verify(C.get(name)))
         self.arguments[name] = Argument(name, type, default, present, help, Condition.and_all(self.now_preconds), post_cond)
@@ -128,8 +128,9 @@ class ArgumentParser:
         name: str, 
         help: str = "" , 
         verify : Callable[[ Any ], bool] = lambda _: True ,
+        aliases: list[str] = [] , 
     ):
-        self.add_argument(name, bool, False, True, help, verify)
+        self.add_argument(name, bool, False, True, help, verify, aliases)
 
     def parse_namespace(self, 
             args: list[str] | None = None, 
