@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>xingyun.logger.globaldata API documentation</title>
+<meta name="description" content="This module optionally denpends on the `xingyun-GlobalDataManager` entry of [EgorovSystem](https://github.com/FFTYYY/EgorovSystem).
+Egorov System …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>xingyun.logger.globaldata</code></h1>
+</header>
+<section id="section-intro">
+<p>This module optionally denpends on the <code>xingyun-GlobalDataManager</code> entry of <a href="https://github.com/FFTYYY/EgorovSystem">EgorovSystem</a>.</p>
+<h3 id="egorov-system-data-format">Egorov System Data Format</h3>
+<pre><code>`{path}`
+</code></pre>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;This module optionally denpends on the `xingyun-GlobalDataManager` entry of [EgorovSystem](https://github.com/FFTYYY/EgorovSystem).
+### Egorov System Data Format
+    `{path}`
+&#39;&#39;&#39;
+from egorovsystem import get_variable
+from typing import Any, Union, Callable, List, TypeAlias
+import atexit
+from xingyun.savecode.get_code import get_code, filter_default, filter_gitignore, compare_dict, filter_hidden
+from .logger import Logger
+from .base import get_aws3_dataacess, DataAccess
+
+HookType: TypeAlias = Callable[[str,Any,int,dict,str], Any]
+
+def call_hook(hk: HookType, key: str, val: Any, timestamp: int, all_data: dict, modespace: str):
+    &#39;&#39;&#39;call a hook.
+    This function is just to make my auto complete system work when coding.&#39;&#39;&#39;
+    return hk(key, val, timestamp, all_data, modespace)
+
+def make_hook_logger(logger: Logger):
+    &#39;&#39;&#39;This is a hook helper funtion. It helps to create a hook that can be used for `GlobalDataManager`.
+    &#39;&#39;&#39;
+    def _logger_hook(key: str, val: str, timestamp: int, all_data: dict, modespace: str):
+        if modespace == GlobalDataManager.LOGGER_MODESPACE:
+            logger.log(val)
+    return _logger_hook
+
+class GlobalDataManager:
+    &#39;&#39;&#39;This class is used to save all important data of a process. It will automatically upload data to S3. 
+        This class will create a meta file under given path to store meta information (list of keys).
+
+    This class optionally denpends on the `xingyun-GlobalDataManager` entry of 
+    [EgorovSystem](https://github.com/FFTYYY/EgorovSystem).
+    
+    ### Egorov System Data Format
+        `{path}`
+    &#39;&#39;&#39;
+    METAFILE = &#34;_meta&#34;
+    DEFAULT_MODESPACE = &#34;default&#34;
+    LOGGER_MODESPACE = &#34;logger&#34;
+    LOGGER_KEY = &#34;_log&#34;
+    CODE_KEY = &#34;_code&#34;
+    EGO_KEY = &#34;xingyun-GlobalDataManager&#34;
+
+    def __init__(self, 
+        name: str , 
+        hooks: List[HookType] = [] , 
+        data_access: DataAccess | None = None , 
+        sync_time: int = 50
+    ):
+        &#39;&#39;&#39;
+        The intialize function of vlass `GlobalDataManager`.
+
+        ### Parameters
+            - name_: the name of the current project.
+            - hooks: a list of hooks. Each hook is a callable object that will be called at each time when data updates. 
+                The parameters of a hook call is `(key, value, timestamp, all_data, modespace)`. 
+                The parameter `modespace` is used to control which hooks to be called.
+            - data_access: A `DataAccess` instance to guide how to save data.
+            - sync_time: will automatically sync every `sync_time` times. 
+        &#39;&#39;&#39;
+
+        # ensure data access
+        _my_default_dataacess = get_aws3_dataacess().set_path(get_variable(type(self).EGO_KEY))
+        if data_access is None:
+            if _my_default_dataacess is None:
+                raise RuntimeError(&#34;no path. no data in EgorovSystem.&#34;)
+            data_access = _my_default_dataacess
+        self.data_access = data_access.cd(name)
+
+        # initialize / recover data
+        self.datas: dict[str, dict[int, Any]] = {}
+        self.time_stamps: dict[str, int] = {}
+        if not self.download(): # if no remote data, then create a meta entry
+            self.update_meta()
+
+        # store hooks
+        self.hooks = hooks
+
+        # intialize sync params
+        self.sync_time = max(int(sync_time), 1) # ensure no devide by 0
+        self._sync_count = 0
+            
+    def __del__(self):
+        # ensure sync at exit
+        self.upload_data()
+
+    def should_sync(self, sync: bool | None):
+        &#39;&#39;&#39; Return true one time every `self.sync_time` calls.
+        ### Parameters
+            - sync: If not `True`, then sync whatever. If not `False`, then don&#39;t sync whatever. 
+        &#39;&#39;&#39;
+        self._sync_count = (self._sync_count + 1) % self.sync_time
+        if sync is None:
+            return self._sync_count == 0
+        return sync
+
+    def upload_data(self, keys: list[str] | None = None) -&gt; bool:
+        &#39;&#39;&#39;Upload data to remote.
+        
+        ### Parameters
+            - keys: the keys of the data to upload. If `None`, then all data.
+        &#39;&#39;&#39;
+        flag = True
+        flag = flag and self.update_meta()
+
+        if keys is None:
+            keys = list(self.datas)
+        for key in keys:
+            flag = flag and self.set_remote(key, self.datas.get(key))
+        return flag
+    
+    def update_meta(self) -&gt; bool:
+        &#39;&#39;&#39;If the meta file is not created, then creat it.&#39;&#39;&#39;
+
+        return self.set_remote(GlobalDataManager.METAFILE, {
+            &#34;time_stamps&#34;: self.time_stamps , 
+        })
+    
+    def download(self):
+        &#39;&#39;&#39;Read the meta file information and recover data. If no meta file then return `False`.&#39;&#39;&#39;
+
+        meta_info = self.get_remote(GlobalDataManager.METAFILE)
+        if meta_info is None:
+            return False
+        
+        try:
+            time_stamps: dict[str, int] = meta_info[&#34;time_stamps&#34;]
+        except:
+            return False
+        
+        self.time_stamps = time_stamps
+        for key in time_stamps:
+            self.datas[key] = self.get_remote(key)
+
+
+    def update_when_diff(self, 
+        key: str, 
+        val: Any,
+        cmp: Callable[[Any, Any], bool] , 
+        modespace: str = DEFAULT_MODESPACE , 
+        overwrite: bool = False, 
+        force_timestamp: int | None = None, 
+        sync: bool | None = None
+    ) -&gt; bool:
+        &#39;&#39;&#39;Set data. But only sets when data is different from stored one.
+
+        ### Parameters
+            - force_timestamp: If not `None`, then will force timestamp setting to this value.
+            - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+                If `force_timestamp == True`, then this parameter will not be used.
+            - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+        &#39;&#39;&#39;
+
+        time_stamp = self.time_stamps.get(key)
+        if force_timestamp is not None: # force time stamp
+            time_stamp = force_timestamp
+
+        saved = self.get(key, time_stamp)
+        if cmp(saved, val):
+            return True
+        return self.set(key, val, modespace, overwrite, force_timestamp, sync)
+
+    def set(self, 
+        key: str, 
+        val: Any, 
+        modespace: str = DEFAULT_MODESPACE , 
+        overwrite: bool = False, 
+        force_timestamp: int | None = None, 
+        sync: bool | None = None
+    ) -&gt; bool:
+        &#39;&#39;&#39;Set data. 
+
+        ### Parameters
+            - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+                If `force_timestamp == True`, then this parameter will not be used.
+            - force_timestamp: If not `None`, then will force timestamp setting to this value.
+            - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+        &#39;&#39;&#39;
+
+        # ensure and update timestamp
+        time_stamp = self.time_stamps.get(key)
+        if force_timestamp is not None:         # force time stamp anyway
+            time_stamp = force_timestamp
+        else:
+            if time_stamp is None:              # set default time stamp
+                time_stamp = 0
+            else:
+                if not overwrite:               # apply only when time_stamp is already created       
+                    time_stamp = time_stamp + 1 # increment time stamp
+
+        self.time_stamps[key] = time_stamp
+
+        # ensure data entry
+        if self.datas.get(key) is None:
+            self.datas[key] = {}
+        data_entry = self.datas.get(key)
+
+        if not isinstance(data_entry, dict):
+            raise RuntimeError(f&#34;THIS CAN NEVER HAPPEN.&#34;)
+
+        # update data
+        data_entry[time_stamp] = val
+
+        # optionally sync data
+        flag = True
+        if self.should_sync(sync):
+            flag = flag and self.upload_data([key])
+
+        # call hooks
+        for hk in self.hooks:
+            call_hook(hk, key, val, time_stamp, data_entry, modespace)
+
+        return flag
+    
+    def get(self, key: str, time_stamp: int | None = None):
+        &#39;&#39;&#39;Get data. If no data return `None`.
+
+        ### Parameters
+            - time_stamp: Ask the data at a specific time stamp. If `None`, then default to current time stamp.
+        &#39;&#39;&#39;
+        
+        if time_stamp is None:
+            time_stamp = self.time_stamps.get(key)
+
+        if time_stamp is None:
+            return None
+        
+        data_entry = self.datas.get(key)
+        if data_entry is None:
+            return None
+        
+        return data_entry.get(time_stamp)
+
+    def get_remote(self, key: str):
+        return self.data_access.get(key)
+    
+    def set_remote(self, key: str, val: Any):
+        return self.data_access.set(key, val)
+
+
+    def log(self, content: str, sync: bool | None = None):
+        &#39;&#39;&#39;This function save data to logger modespace.&#39;&#39;&#39;
+        return self.set(type(self).LOGGER_KEY, content, modespace = type(self).LOGGER_MODESPACE, sync = sync)
+
+    def get_timestamp(self, key: str) -&gt; int:
+        &#39;&#39;&#39;Returns the current timestamp of a file. If it is not created, return -1.&#39;&#39;&#39;
+        t = self.time_stamps.get(key)
+        if t is None:
+            return -1        
+        return t
+
+    def exists(self, key: str):
+        return self.datas.get(key) is None
+
+    def summarize(self, key: str, summarize_func: Callable[[dict[int, Any]] , Any]):
+        &#39;&#39;&#39;Summerize all of the history of a data entry.&#39;&#39;&#39;
+        data_entry = self.datas.get(key)
+        if data_entry is None:
+            return None
+        return summarize_func(data_entry)
+        
+    def log_code(self, 
+        filters: list[ Callable[[str], bool] ] = [filter_default, filter_gitignore, filter_hidden], 
+        sizelimit : int | str = &#34;1mb&#34; , 
+        total_sizelimit : int | str = &#34;500mb&#34; , 
+        path: str = &#34;.&#34;, 
+    ):
+        &#39;&#39;&#39;This function log current code. Only update when there is change in code. Returns code version.&#39;&#39;&#39;
+        code_data = get_code(filters, sizelimit, total_sizelimit, path)
+        self.update_when_diff(type(self).CODE_KEY, code_data, compare_dict, &#34;code&#34;)
+        return self.get_timestamp(type(self).CODE_KEY)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="xingyun.logger.globaldata.call_hook"><code class="name flex">
+<span>def <span class="ident">call_hook</span></span>(<span>hk: Callable[[str, Any, int, dict, str], Any], key: str, val: Any, timestamp: int, all_data: dict, modespace: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>call a hook.
+This function is just to make my auto complete system work when coding.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def call_hook(hk: HookType, key: str, val: Any, timestamp: int, all_data: dict, modespace: str):
+    &#39;&#39;&#39;call a hook.
+    This function is just to make my auto complete system work when coding.&#39;&#39;&#39;
+    return hk(key, val, timestamp, all_data, modespace)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.make_hook_logger"><code class="name flex">
+<span>def <span class="ident">make_hook_logger</span></span>(<span>logger: <a title="xingyun.logger.logger.Logger" href="logger.html#xingyun.logger.logger.Logger">Logger</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This is a hook helper funtion. It helps to create a hook that can be used for <code><a title="xingyun.logger.globaldata.GlobalDataManager" href="#xingyun.logger.globaldata.GlobalDataManager">GlobalDataManager</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_hook_logger(logger: Logger):
+    &#39;&#39;&#39;This is a hook helper funtion. It helps to create a hook that can be used for `GlobalDataManager`.
+    &#39;&#39;&#39;
+    def _logger_hook(key: str, val: str, timestamp: int, all_data: dict, modespace: str):
+        if modespace == GlobalDataManager.LOGGER_MODESPACE:
+            logger.log(val)
+    return _logger_hook</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="xingyun.logger.globaldata.GlobalDataManager"><code class="flex name class">
+<span>class <span class="ident">GlobalDataManager</span></span>
+<span>(</span><span>name: str, hooks: List[Callable[[str, Any, int, dict, str], Any]] = [], data_access: <a title="xingyun.logger.base.DataAccess" href="base.html#xingyun.logger.base.DataAccess">DataAccess</a> | None = None, sync_time: int = 50)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is used to save all important data of a process. It will automatically upload data to S3.
+This class will create a meta file under given path to store meta information (list of keys).</p>
+<p>This class optionally denpends on the <code>xingyun-GlobalDataManager</code> entry of
+<a href="https://github.com/FFTYYY/EgorovSystem">EgorovSystem</a>.</p>
+<h3 id="egorov-system-data-format">Egorov System Data Format</h3>
+<pre><code>`{path}`
+</code></pre>
+<p>The intialize function of vlass <code><a title="xingyun.logger.globaldata.GlobalDataManager" href="#xingyun.logger.globaldata.GlobalDataManager">GlobalDataManager</a></code>.</p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- name_: the name of the current project.
+- hooks: a list of hooks. Each hook is a callable object that will be called at each time when data updates. 
+    The parameters of a hook call is &lt;code&gt;(key, value, timestamp, all\_data, modespace)&lt;/code&gt;. 
+    The parameter &lt;code&gt;modespace&lt;/code&gt; is used to control which hooks to be called.
+- data_access: A &lt;code&gt;DataAccess&lt;/code&gt; instance to guide how to save data.
+- sync_time: will automatically sync every &lt;code&gt;sync\_time&lt;/code&gt; times.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GlobalDataManager:
+    &#39;&#39;&#39;This class is used to save all important data of a process. It will automatically upload data to S3. 
+        This class will create a meta file under given path to store meta information (list of keys).
+
+    This class optionally denpends on the `xingyun-GlobalDataManager` entry of 
+    [EgorovSystem](https://github.com/FFTYYY/EgorovSystem).
+    
+    ### Egorov System Data Format
+        `{path}`
+    &#39;&#39;&#39;
+    METAFILE = &#34;_meta&#34;
+    DEFAULT_MODESPACE = &#34;default&#34;
+    LOGGER_MODESPACE = &#34;logger&#34;
+    LOGGER_KEY = &#34;_log&#34;
+    CODE_KEY = &#34;_code&#34;
+    EGO_KEY = &#34;xingyun-GlobalDataManager&#34;
+
+    def __init__(self, 
+        name: str , 
+        hooks: List[HookType] = [] , 
+        data_access: DataAccess | None = None , 
+        sync_time: int = 50
+    ):
+        &#39;&#39;&#39;
+        The intialize function of vlass `GlobalDataManager`.
+
+        ### Parameters
+            - name_: the name of the current project.
+            - hooks: a list of hooks. Each hook is a callable object that will be called at each time when data updates. 
+                The parameters of a hook call is `(key, value, timestamp, all_data, modespace)`. 
+                The parameter `modespace` is used to control which hooks to be called.
+            - data_access: A `DataAccess` instance to guide how to save data.
+            - sync_time: will automatically sync every `sync_time` times. 
+        &#39;&#39;&#39;
+
+        # ensure data access
+        _my_default_dataacess = get_aws3_dataacess().set_path(get_variable(type(self).EGO_KEY))
+        if data_access is None:
+            if _my_default_dataacess is None:
+                raise RuntimeError(&#34;no path. no data in EgorovSystem.&#34;)
+            data_access = _my_default_dataacess
+        self.data_access = data_access.cd(name)
+
+        # initialize / recover data
+        self.datas: dict[str, dict[int, Any]] = {}
+        self.time_stamps: dict[str, int] = {}
+        if not self.download(): # if no remote data, then create a meta entry
+            self.update_meta()
+
+        # store hooks
+        self.hooks = hooks
+
+        # intialize sync params
+        self.sync_time = max(int(sync_time), 1) # ensure no devide by 0
+        self._sync_count = 0
+            
+    def __del__(self):
+        # ensure sync at exit
+        self.upload_data()
+
+    def should_sync(self, sync: bool | None):
+        &#39;&#39;&#39; Return true one time every `self.sync_time` calls.
+        ### Parameters
+            - sync: If not `True`, then sync whatever. If not `False`, then don&#39;t sync whatever. 
+        &#39;&#39;&#39;
+        self._sync_count = (self._sync_count + 1) % self.sync_time
+        if sync is None:
+            return self._sync_count == 0
+        return sync
+
+    def upload_data(self, keys: list[str] | None = None) -&gt; bool:
+        &#39;&#39;&#39;Upload data to remote.
+        
+        ### Parameters
+            - keys: the keys of the data to upload. If `None`, then all data.
+        &#39;&#39;&#39;
+        flag = True
+        flag = flag and self.update_meta()
+
+        if keys is None:
+            keys = list(self.datas)
+        for key in keys:
+            flag = flag and self.set_remote(key, self.datas.get(key))
+        return flag
+    
+    def update_meta(self) -&gt; bool:
+        &#39;&#39;&#39;If the meta file is not created, then creat it.&#39;&#39;&#39;
+
+        return self.set_remote(GlobalDataManager.METAFILE, {
+            &#34;time_stamps&#34;: self.time_stamps , 
+        })
+    
+    def download(self):
+        &#39;&#39;&#39;Read the meta file information and recover data. If no meta file then return `False`.&#39;&#39;&#39;
+
+        meta_info = self.get_remote(GlobalDataManager.METAFILE)
+        if meta_info is None:
+            return False
+        
+        try:
+            time_stamps: dict[str, int] = meta_info[&#34;time_stamps&#34;]
+        except:
+            return False
+        
+        self.time_stamps = time_stamps
+        for key in time_stamps:
+            self.datas[key] = self.get_remote(key)
+
+
+    def update_when_diff(self, 
+        key: str, 
+        val: Any,
+        cmp: Callable[[Any, Any], bool] , 
+        modespace: str = DEFAULT_MODESPACE , 
+        overwrite: bool = False, 
+        force_timestamp: int | None = None, 
+        sync: bool | None = None
+    ) -&gt; bool:
+        &#39;&#39;&#39;Set data. But only sets when data is different from stored one.
+
+        ### Parameters
+            - force_timestamp: If not `None`, then will force timestamp setting to this value.
+            - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+                If `force_timestamp == True`, then this parameter will not be used.
+            - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+        &#39;&#39;&#39;
+
+        time_stamp = self.time_stamps.get(key)
+        if force_timestamp is not None: # force time stamp
+            time_stamp = force_timestamp
+
+        saved = self.get(key, time_stamp)
+        if cmp(saved, val):
+            return True
+        return self.set(key, val, modespace, overwrite, force_timestamp, sync)
+
+    def set(self, 
+        key: str, 
+        val: Any, 
+        modespace: str = DEFAULT_MODESPACE , 
+        overwrite: bool = False, 
+        force_timestamp: int | None = None, 
+        sync: bool | None = None
+    ) -&gt; bool:
+        &#39;&#39;&#39;Set data. 
+
+        ### Parameters
+            - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+                If `force_timestamp == True`, then this parameter will not be used.
+            - force_timestamp: If not `None`, then will force timestamp setting to this value.
+            - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+        &#39;&#39;&#39;
+
+        # ensure and update timestamp
+        time_stamp = self.time_stamps.get(key)
+        if force_timestamp is not None:         # force time stamp anyway
+            time_stamp = force_timestamp
+        else:
+            if time_stamp is None:              # set default time stamp
+                time_stamp = 0
+            else:
+                if not overwrite:               # apply only when time_stamp is already created       
+                    time_stamp = time_stamp + 1 # increment time stamp
+
+        self.time_stamps[key] = time_stamp
+
+        # ensure data entry
+        if self.datas.get(key) is None:
+            self.datas[key] = {}
+        data_entry = self.datas.get(key)
+
+        if not isinstance(data_entry, dict):
+            raise RuntimeError(f&#34;THIS CAN NEVER HAPPEN.&#34;)
+
+        # update data
+        data_entry[time_stamp] = val
+
+        # optionally sync data
+        flag = True
+        if self.should_sync(sync):
+            flag = flag and self.upload_data([key])
+
+        # call hooks
+        for hk in self.hooks:
+            call_hook(hk, key, val, time_stamp, data_entry, modespace)
+
+        return flag
+    
+    def get(self, key: str, time_stamp: int | None = None):
+        &#39;&#39;&#39;Get data. If no data return `None`.
+
+        ### Parameters
+            - time_stamp: Ask the data at a specific time stamp. If `None`, then default to current time stamp.
+        &#39;&#39;&#39;
+        
+        if time_stamp is None:
+            time_stamp = self.time_stamps.get(key)
+
+        if time_stamp is None:
+            return None
+        
+        data_entry = self.datas.get(key)
+        if data_entry is None:
+            return None
+        
+        return data_entry.get(time_stamp)
+
+    def get_remote(self, key: str):
+        return self.data_access.get(key)
+    
+    def set_remote(self, key: str, val: Any):
+        return self.data_access.set(key, val)
+
+
+    def log(self, content: str, sync: bool | None = None):
+        &#39;&#39;&#39;This function save data to logger modespace.&#39;&#39;&#39;
+        return self.set(type(self).LOGGER_KEY, content, modespace = type(self).LOGGER_MODESPACE, sync = sync)
+
+    def get_timestamp(self, key: str) -&gt; int:
+        &#39;&#39;&#39;Returns the current timestamp of a file. If it is not created, return -1.&#39;&#39;&#39;
+        t = self.time_stamps.get(key)
+        if t is None:
+            return -1        
+        return t
+
+    def exists(self, key: str):
+        return self.datas.get(key) is None
+
+    def summarize(self, key: str, summarize_func: Callable[[dict[int, Any]] , Any]):
+        &#39;&#39;&#39;Summerize all of the history of a data entry.&#39;&#39;&#39;
+        data_entry = self.datas.get(key)
+        if data_entry is None:
+            return None
+        return summarize_func(data_entry)
+        
+    def log_code(self, 
+        filters: list[ Callable[[str], bool] ] = [filter_default, filter_gitignore, filter_hidden], 
+        sizelimit : int | str = &#34;1mb&#34; , 
+        total_sizelimit : int | str = &#34;500mb&#34; , 
+        path: str = &#34;.&#34;, 
+    ):
+        &#39;&#39;&#39;This function log current code. Only update when there is change in code. Returns code version.&#39;&#39;&#39;
+        code_data = get_code(filters, sizelimit, total_sizelimit, path)
+        self.update_when_diff(type(self).CODE_KEY, code_data, compare_dict, &#34;code&#34;)
+        return self.get_timestamp(type(self).CODE_KEY)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.CODE_KEY"><code class="name">var <span class="ident">CODE_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.DEFAULT_MODESPACE"><code class="name">var <span class="ident">DEFAULT_MODESPACE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.EGO_KEY"><code class="name">var <span class="ident">EGO_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.LOGGER_KEY"><code class="name">var <span class="ident">LOGGER_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.LOGGER_MODESPACE"><code class="name">var <span class="ident">LOGGER_MODESPACE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.METAFILE"><code class="name">var <span class="ident">METAFILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.download"><code class="name flex">
+<span>def <span class="ident">download</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read the meta file information and recover data. If no meta file then return <code>False</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download(self):
+    &#39;&#39;&#39;Read the meta file information and recover data. If no meta file then return `False`.&#39;&#39;&#39;
+
+    meta_info = self.get_remote(GlobalDataManager.METAFILE)
+    if meta_info is None:
+        return False
+    
+    try:
+        time_stamps: dict[str, int] = meta_info[&#34;time_stamps&#34;]
+    except:
+        return False
+    
+    self.time_stamps = time_stamps
+    for key in time_stamps:
+        self.datas[key] = self.get_remote(key)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.exists"><code class="name flex">
+<span>def <span class="ident">exists</span></span>(<span>self, key: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def exists(self, key: str):
+    return self.datas.get(key) is None</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self, key: str, time_stamp: int | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get data. If no data return <code>None</code>.</p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- time_stamp: Ask the data at a specific time stamp. If &lt;code&gt;None&lt;/code&gt;, then default to current time stamp.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get(self, key: str, time_stamp: int | None = None):
+    &#39;&#39;&#39;Get data. If no data return `None`.
+
+    ### Parameters
+        - time_stamp: Ask the data at a specific time stamp. If `None`, then default to current time stamp.
+    &#39;&#39;&#39;
+    
+    if time_stamp is None:
+        time_stamp = self.time_stamps.get(key)
+
+    if time_stamp is None:
+        return None
+    
+    data_entry = self.datas.get(key)
+    if data_entry is None:
+        return None
+    
+    return data_entry.get(time_stamp)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.get_remote"><code class="name flex">
+<span>def <span class="ident">get_remote</span></span>(<span>self, key: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_remote(self, key: str):
+    return self.data_access.get(key)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.get_timestamp"><code class="name flex">
+<span>def <span class="ident">get_timestamp</span></span>(<span>self, key: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the current timestamp of a file. If it is not created, return -1.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_timestamp(self, key: str) -&gt; int:
+    &#39;&#39;&#39;Returns the current timestamp of a file. If it is not created, return -1.&#39;&#39;&#39;
+    t = self.time_stamps.get(key)
+    if t is None:
+        return -1        
+    return t</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.log"><code class="name flex">
+<span>def <span class="ident">log</span></span>(<span>self, content: str, sync: bool | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function save data to logger modespace.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log(self, content: str, sync: bool | None = None):
+    &#39;&#39;&#39;This function save data to logger modespace.&#39;&#39;&#39;
+    return self.set(type(self).LOGGER_KEY, content, modespace = type(self).LOGGER_MODESPACE, sync = sync)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.log_code"><code class="name flex">
+<span>def <span class="ident">log_code</span></span>(<span>self, filters: list[typing.Callable[[str], bool]] = [&lt;function filter_default&gt;, &lt;function filter_gitignore&gt;, &lt;function filter_hidden&gt;], sizelimit: int | str = '1mb', total_sizelimit: int | str = '500mb', path: str = '.')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function log current code. Only update when there is change in code. Returns code version.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log_code(self, 
+    filters: list[ Callable[[str], bool] ] = [filter_default, filter_gitignore, filter_hidden], 
+    sizelimit : int | str = &#34;1mb&#34; , 
+    total_sizelimit : int | str = &#34;500mb&#34; , 
+    path: str = &#34;.&#34;, 
+):
+    &#39;&#39;&#39;This function log current code. Only update when there is change in code. Returns code version.&#39;&#39;&#39;
+    code_data = get_code(filters, sizelimit, total_sizelimit, path)
+    self.update_when_diff(type(self).CODE_KEY, code_data, compare_dict, &#34;code&#34;)
+    return self.get_timestamp(type(self).CODE_KEY)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.set"><code class="name flex">
+<span>def <span class="ident">set</span></span>(<span>self, key: str, val: Any, modespace: str = 'default', overwrite: bool = False, force_timestamp: int | None = None, sync: bool | None = None) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set data. </p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- overwrite: If &lt;code&gt;True&lt;/code&gt;, will not update timestamp. Else timestamp will be automatically shifted by &lt;code&gt;1&lt;/code&gt;. 
+    If `force_timestamp == True`, then this parameter will not be used.
+- force_timestamp: If not &lt;code&gt;None&lt;/code&gt;, then will force timestamp setting to this value.
+- sync: If &lt;code&gt;True&lt;/code&gt;, then will upload the data to remote. If &lt;code&gt;None&lt;/code&gt; then use the &lt;code&gt;autosync&lt;/code&gt; property.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set(self, 
+    key: str, 
+    val: Any, 
+    modespace: str = DEFAULT_MODESPACE , 
+    overwrite: bool = False, 
+    force_timestamp: int | None = None, 
+    sync: bool | None = None
+) -&gt; bool:
+    &#39;&#39;&#39;Set data. 
+
+    ### Parameters
+        - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+            If `force_timestamp == True`, then this parameter will not be used.
+        - force_timestamp: If not `None`, then will force timestamp setting to this value.
+        - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+    &#39;&#39;&#39;
+
+    # ensure and update timestamp
+    time_stamp = self.time_stamps.get(key)
+    if force_timestamp is not None:         # force time stamp anyway
+        time_stamp = force_timestamp
+    else:
+        if time_stamp is None:              # set default time stamp
+            time_stamp = 0
+        else:
+            if not overwrite:               # apply only when time_stamp is already created       
+                time_stamp = time_stamp + 1 # increment time stamp
+
+    self.time_stamps[key] = time_stamp
+
+    # ensure data entry
+    if self.datas.get(key) is None:
+        self.datas[key] = {}
+    data_entry = self.datas.get(key)
+
+    if not isinstance(data_entry, dict):
+        raise RuntimeError(f&#34;THIS CAN NEVER HAPPEN.&#34;)
+
+    # update data
+    data_entry[time_stamp] = val
+
+    # optionally sync data
+    flag = True
+    if self.should_sync(sync):
+        flag = flag and self.upload_data([key])
+
+    # call hooks
+    for hk in self.hooks:
+        call_hook(hk, key, val, time_stamp, data_entry, modespace)
+
+    return flag</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.set_remote"><code class="name flex">
+<span>def <span class="ident">set_remote</span></span>(<span>self, key: str, val: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_remote(self, key: str, val: Any):
+    return self.data_access.set(key, val)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.should_sync"><code class="name flex">
+<span>def <span class="ident">should_sync</span></span>(<span>self, sync: bool | None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return true one time every <code>self.sync_time</code> calls.</p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- sync: If not &lt;code&gt;True&lt;/code&gt;, then sync whatever. If not &lt;code&gt;False&lt;/code&gt;, then don't sync whatever.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def should_sync(self, sync: bool | None):
+    &#39;&#39;&#39; Return true one time every `self.sync_time` calls.
+    ### Parameters
+        - sync: If not `True`, then sync whatever. If not `False`, then don&#39;t sync whatever. 
+    &#39;&#39;&#39;
+    self._sync_count = (self._sync_count + 1) % self.sync_time
+    if sync is None:
+        return self._sync_count == 0
+    return sync</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.summarize"><code class="name flex">
+<span>def <span class="ident">summarize</span></span>(<span>self, key: str, summarize_func: Callable[[dict[int, Any]], Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Summerize all of the history of a data entry.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def summarize(self, key: str, summarize_func: Callable[[dict[int, Any]] , Any]):
+    &#39;&#39;&#39;Summerize all of the history of a data entry.&#39;&#39;&#39;
+    data_entry = self.datas.get(key)
+    if data_entry is None:
+        return None
+    return summarize_func(data_entry)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.update_meta"><code class="name flex">
+<span>def <span class="ident">update_meta</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>If the meta file is not created, then creat it.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_meta(self) -&gt; bool:
+    &#39;&#39;&#39;If the meta file is not created, then creat it.&#39;&#39;&#39;
+
+    return self.set_remote(GlobalDataManager.METAFILE, {
+        &#34;time_stamps&#34;: self.time_stamps , 
+    })</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.update_when_diff"><code class="name flex">
+<span>def <span class="ident">update_when_diff</span></span>(<span>self, key: str, val: Any, cmp: Callable[[Any, Any], bool], modespace: str = 'default', overwrite: bool = False, force_timestamp: int | None = None, sync: bool | None = None) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set data. But only sets when data is different from stored one.</p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- force_timestamp: If not &lt;code&gt;None&lt;/code&gt;, then will force timestamp setting to this value.
+- overwrite: If &lt;code&gt;True&lt;/code&gt;, will not update timestamp. Else timestamp will be automatically shifted by &lt;code&gt;1&lt;/code&gt;. 
+    If `force_timestamp == True`, then this parameter will not be used.
+- sync: If &lt;code&gt;True&lt;/code&gt;, then will upload the data to remote. If &lt;code&gt;None&lt;/code&gt; then use the &lt;code&gt;autosync&lt;/code&gt; property.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_when_diff(self, 
+    key: str, 
+    val: Any,
+    cmp: Callable[[Any, Any], bool] , 
+    modespace: str = DEFAULT_MODESPACE , 
+    overwrite: bool = False, 
+    force_timestamp: int | None = None, 
+    sync: bool | None = None
+) -&gt; bool:
+    &#39;&#39;&#39;Set data. But only sets when data is different from stored one.
+
+    ### Parameters
+        - force_timestamp: If not `None`, then will force timestamp setting to this value.
+        - overwrite: If `True`, will not update timestamp. Else timestamp will be automatically shifted by `1`. 
+            If `force_timestamp == True`, then this parameter will not be used.
+        - sync: If `True`, then will upload the data to remote. If `None` then use the `autosync` property.
+    &#39;&#39;&#39;
+
+    time_stamp = self.time_stamps.get(key)
+    if force_timestamp is not None: # force time stamp
+        time_stamp = force_timestamp
+
+    saved = self.get(key, time_stamp)
+    if cmp(saved, val):
+        return True
+    return self.set(key, val, modespace, overwrite, force_timestamp, sync)</code></pre>
+</details>
+</dd>
+<dt id="xingyun.logger.globaldata.GlobalDataManager.upload_data"><code class="name flex">
+<span>def <span class="ident">upload_data</span></span>(<span>self, keys: list[str] | None = None) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Upload data to remote.</p>
+<h3 id="parameters">Parameters</h3>
+<pre><code>- keys: the keys of the data to upload. If &lt;code&gt;None&lt;/code&gt;, then all data.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def upload_data(self, keys: list[str] | None = None) -&gt; bool:
+    &#39;&#39;&#39;Upload data to remote.
+    
+    ### Parameters
+        - keys: the keys of the data to upload. If `None`, then all data.
+    &#39;&#39;&#39;
+    flag = True
+    flag = flag and self.update_meta()
+
+    if keys is None:
+        keys = list(self.datas)
+    for key in keys:
+        flag = flag and self.set_remote(key, self.datas.get(key))
+    return flag</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#egorov-system-data-format">Egorov System Data Format</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="xingyun.logger" href="index.html">xingyun.logger</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="xingyun.logger.globaldata.call_hook" href="#xingyun.logger.globaldata.call_hook">call_hook</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.make_hook_logger" href="#xingyun.logger.globaldata.make_hook_logger">make_hook_logger</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="xingyun.logger.globaldata.GlobalDataManager" href="#xingyun.logger.globaldata.GlobalDataManager">GlobalDataManager</a></code></h4>
+<ul class="two-column">
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.CODE_KEY" href="#xingyun.logger.globaldata.GlobalDataManager.CODE_KEY">CODE_KEY</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.DEFAULT_MODESPACE" href="#xingyun.logger.globaldata.GlobalDataManager.DEFAULT_MODESPACE">DEFAULT_MODESPACE</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.EGO_KEY" href="#xingyun.logger.globaldata.GlobalDataManager.EGO_KEY">EGO_KEY</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.LOGGER_KEY" href="#xingyun.logger.globaldata.GlobalDataManager.LOGGER_KEY">LOGGER_KEY</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.LOGGER_MODESPACE" href="#xingyun.logger.globaldata.GlobalDataManager.LOGGER_MODESPACE">LOGGER_MODESPACE</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.METAFILE" href="#xingyun.logger.globaldata.GlobalDataManager.METAFILE">METAFILE</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.download" href="#xingyun.logger.globaldata.GlobalDataManager.download">download</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.exists" href="#xingyun.logger.globaldata.GlobalDataManager.exists">exists</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.get" href="#xingyun.logger.globaldata.GlobalDataManager.get">get</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.get_remote" href="#xingyun.logger.globaldata.GlobalDataManager.get_remote">get_remote</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.get_timestamp" href="#xingyun.logger.globaldata.GlobalDataManager.get_timestamp">get_timestamp</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.log" href="#xingyun.logger.globaldata.GlobalDataManager.log">log</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.log_code" href="#xingyun.logger.globaldata.GlobalDataManager.log_code">log_code</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.set" href="#xingyun.logger.globaldata.GlobalDataManager.set">set</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.set_remote" href="#xingyun.logger.globaldata.GlobalDataManager.set_remote">set_remote</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.should_sync" href="#xingyun.logger.globaldata.GlobalDataManager.should_sync">should_sync</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.summarize" href="#xingyun.logger.globaldata.GlobalDataManager.summarize">summarize</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.update_meta" href="#xingyun.logger.globaldata.GlobalDataManager.update_meta">update_meta</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.update_when_diff" href="#xingyun.logger.globaldata.GlobalDataManager.update_when_diff">update_when_diff</a></code></li>
+<li><code><a title="xingyun.logger.globaldata.GlobalDataManager.upload_data" href="#xingyun.logger.globaldata.GlobalDataManager.upload_data">upload_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
