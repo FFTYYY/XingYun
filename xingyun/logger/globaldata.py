@@ -8,6 +8,7 @@ import atexit
 from xingyun.savecode.get_code import get_code, filter_default, filter_gitignore, compare_dict, filter_hidden
 from .logger import Logger
 from .base import get_aws3_dataacess, DataAccess
+import warnings
 
 HookType: TypeAlias = Callable[[str,Any,int,dict,str], Any]
 
@@ -82,7 +83,10 @@ class GlobalDataManager:
             
     def __del__(self):
         # ensure sync at exit
-        self.upload_data()
+        try:
+            self.upload_data()
+        except Exception:
+            warnings.warn("final sync failed.")
 
     def should_sync(self, sync: bool | None):
         ''' Return true one time every `self.sync_time` calls.

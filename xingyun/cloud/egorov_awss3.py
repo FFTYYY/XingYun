@@ -11,6 +11,7 @@ from egorovsystem import Egorov, get_variable
 import boto3
 from typing import Literal, Any
 from .awss3 import AWSS3
+import warnings
 
 _awss3_initialized = False
 _awss3 = None
@@ -36,7 +37,8 @@ def sets3(data: Any, tar_path: str, format: Literal["binary" , "str" , "pickle"]
 
     awss3 = get_awss3_instance()
     if awss3 is None:
-        raise RuntimeError("no aws account found.")
+        warnings.warn("no aws account found. upload fail.")
+        return False
     
     return awss3.set(data, tar_path, format)
 
@@ -48,6 +50,7 @@ def gets3(tar_path: str, format: Literal["binary" , "str" , "pickle"] = "pickle"
 
     awss3 = get_awss3_instance()
     if awss3 is None:
-        raise RuntimeError("no aws account found.")
+        warnings.warn("no aws account found. get fail.")
+        return None
     
     return awss3.get(tar_path, format)
