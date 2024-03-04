@@ -85,7 +85,7 @@ class GlobalDataManager:
         # ensure sync at exit
         try:
             self.upload_data()
-        except Exception:
+        except:
             warnings.warn("final sync failed.")
 
     def should_sync(self, sync: bool | None):

@@ -7,6 +7,7 @@ import tempfile
 import pickle
 from typing import Literal, Any
 import blosc
+import warnings
 
 class AWSS3:
     def __init__(self, key_id: str, key_sec: str, region: str, bucket: str):
@@ -18,7 +19,10 @@ class AWSS3:
         self.bucket = bucket
 
     def __del__(self):
-        self.s3.close()
+        try:
+            self.s3.close()
+        except:
+            warnings.warn("close s3 failed.") 
 
     def set(self, data: Any, tar_path: str, format: Literal["binary" , "str" , "pickle"] = "pickle"):
         '''Set the content of a remote file.

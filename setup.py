@@ -17,7 +17,7 @@ pkgs = [p for p in find_packages() if p.startswith("xingyun")]
 
 setup(
     name="xingyun",
-    version="0.0.8-post5",
+    version="0.0.8-post6",
     url="http://github.com/FFTYYY/XingYun",
     description="",
     long_description=readme,
