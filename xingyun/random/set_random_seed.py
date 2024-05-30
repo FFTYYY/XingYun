@@ -13,15 +13,17 @@ def set_module_seed(seed: int , module: RandomAllowedModule):
         torch = my_import_module("torch")
         cuda  = my_import_module("torch.cuda")
 
-        if torch is None or cuda is None:
+        if (torch is None) or (cuda is None):
             return 
-
+        
         torch.manual_seed(seed)
+
         cuda.manual_seed_all(seed)
 
         backends = my_import_module("torch.backends")
         backends.cudnn.deterministic = True
         backends.cudnn.benchmark = False
+
     if module == "numpy":
         np = my_import_module("numpy")
 

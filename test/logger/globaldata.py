@@ -32,8 +32,8 @@ class TestGlobalData(unittest.TestCase):
         sub_name = randint(0,2333333)
         os.system(f"python -m test.logger.globaldata_sub {sub_name}")
         GG = GlobalDataManager(f"test/test_sub_{sub_name}", [make_hook_logger(logger)])
-        self.assertTrue( GG.get("fuck") == 111 )
-        self.assertTrue( GG.get_timestamp("fuck") == 0 )
+        self.assertTrue( GG.get("fuck_sub") == 111 )
+        self.assertTrue( GG.get_timestamp("fuck_sub") == 0 )
 
         print("globaldata good.")
 

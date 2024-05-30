@@ -18,14 +18,26 @@ def get_random_state(module: RandomAllowedModule) -> Any:
     
     if module == "torch":
         torch = my_import_module("torch")
-        cuda = my_import_module("torch.cuda")
+        cuda  = my_import_module("torch.cuda")
 
         if (torch is None) or (cuda is None):
             return None
+        
+        cuda_rs  = None
+        torch_rs = None
+        try:
+            cuda_rs  = cuda.random.get_rng_state()
+        except:
+            pass
+        try:
+            torch_rs = torch.random.get_rng_state()
+        except:
+            pass
+
 
         return {
-            "torch": torch.random.get_rng_state(),
-            "cuda" : cuda .random.get_rng_state(),
+            "torch": torch_rs,
+            "cuda" : cuda_rs,
         }
 
 def set_random_state(state: Any, module: RandomAllowedModule) -> bool:
@@ -55,8 +67,10 @@ def set_random_state(state: Any, module: RandomAllowedModule) -> bool:
         if (torch is None) or (cuda is None):
             return False
         try:
-            torch.random.set_rng_state(state["torch"])
-            cuda.random.set_rng_state(state["cuda"])
+            if state["torch"] is not None:
+                torch.random.set_rng_state(state["torch"])
+            if state["cuda"] is not None:
+                cuda.random.set_rng_state(state["cuda"])
         except:
             flag = False
             

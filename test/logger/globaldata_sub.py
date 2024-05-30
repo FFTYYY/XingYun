@@ -9,7 +9,8 @@ def main():
     logger = Logger()
     G = GlobalDataManager(f"test/test_sub_{name}", [make_hook_logger(logger)])
 
-    G.set("fuck", 111, force_timestamp = 0)
+    G.set("fuck_sub", 111, force_timestamp = 0)
+    G.upload_data()
 
 
 if __name__ == "__main__":
