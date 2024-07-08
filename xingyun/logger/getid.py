@@ -6,7 +6,7 @@ from egorovsystem import get_variable
 from typing import Callable, Any
 from .base import get_aws3_dataacess, DataAccess
 
-_my_default_dataacess = get_aws3_dataacess().set_path(get_variable("xingyun-getid"))
+_my_default_dataacess = None
 
 def get_id(
     name: str, 
@@ -24,10 +24,14 @@ def get_id(
         - name: project name.
         - data_access: A `DataAccess` instance to guide how to save data.
     '''
-
+    global _my_default_dataacess
     if data_access is None:
+
         if _my_default_dataacess is None:
-            raise RuntimeError("no meta_path. no egorov system entry.")
+            try: 
+                _my_default_dataacess = get_aws3_dataacess().set_path(get_variable("xingyun-getid"))
+            except Exception:
+                raise RuntimeError("no meta_path. no egorov system entry.")
         data_access = _my_default_dataacess
 
     val = data_access.get(name)
