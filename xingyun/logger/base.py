@@ -1,6 +1,7 @@
 from typing import Callable, Any
 from pathlib import PurePosixPath 
 from xingyun.cloud.egorov_awss3 import gets3, sets3
+from xingyun.cloud.egorov_dropbox import getdropbox, setdropbox
 
 class DataAccess:
     '''This class defines how to access data that is stored remotely.'''
@@ -53,4 +54,11 @@ def get_aws3_dataacess():
         PurePosixPath("") , 
         lambda k: gets3(k, format = "pickle"), 
         lambda k,v: sets3(v,k, format = "pickle")
+    )
+
+def get_dropbox_dataacess():
+    return DataAccess(
+        PurePosixPath("") , 
+        lambda k: getdropbox(k, format = "pickle"), 
+        lambda k,v: setdropbox(v,k, format = "pickle")
     )

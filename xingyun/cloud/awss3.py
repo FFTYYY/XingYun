@@ -8,8 +8,9 @@ import pickle
 from typing import Literal, Any
 import blosc
 import warnings
+from .base import CloudAPIBase
 
-class AWSS3:
+class AWSS3(CloudAPIBase):
     def __init__(self, key_id: str, key_sec: str, region: str, bucket: str):
         self.s3 = boto3.client("s3" , 
             region_name             = region ,
@@ -45,7 +46,7 @@ class AWSS3:
             data = pickle.dumps(data)
             data = blosc.compress(data) # compress data
 
-        if format == "pickle" or format == "pickle":
+        if format == "pickle" or format == "binary":
             try:
                 with tempfile.TemporaryFile(mode = "wb+") as fil:
                     fil.write(data)

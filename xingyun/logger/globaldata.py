@@ -61,8 +61,8 @@ class GlobalDataManager:
         '''
 
         # ensure data access
-        _my_default_dataacess = get_aws3_dataacess().set_path(get_variable(type(self).EGO_KEY))
         if data_access is None:
+            _my_default_dataacess = get_aws3_dataacess().set_path(get_variable(type(self).EGO_KEY))
             if _my_default_dataacess is None:
                 raise RuntimeError("no path. no data in EgorovSystem.")
             data_access = _my_default_dataacess
@@ -80,6 +80,9 @@ class GlobalDataManager:
         # intialize sync params
         self.sync_time = max(int(sync_time), 1) # ensure no devide by 0
         self._sync_count = 0
+    
+    def __str__(self):
+        return f"<xingyun.GlobalDataManager {self.name}, located at {self.data_access.path}>"
             
     def __del__(self):
         # ensure sync at exit
