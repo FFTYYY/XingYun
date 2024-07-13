@@ -60,6 +60,8 @@ class GlobalDataManager:
             - sync_time: will automatically sync every `sync_time` times. 
         '''
 
+        self.name = name
+
         # ensure data access
         if data_access is None:
             _my_default_dataacess = get_aws3_dataacess().set_path(get_variable(type(self).EGO_KEY))
