@@ -11,8 +11,12 @@ import warnings
 from .base import CloudAPIBase
 
 class Dropbox(CloudAPIBase):
-    def __init__(self, api_key: str):
-        self.dropbox = dropbox.Dropbox(api_key)
+    def __init__(self, app_key: str, app_secret: str, refresh_token: str):
+        self.dropbox = dropbox.Dropbox(
+            app_key = app_key,
+            app_secret = app_secret , 
+            oauth2_refresh_token = refresh_token , 
+        )
 
     def __del__(self):
         try:
