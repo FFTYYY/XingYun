@@ -27,7 +27,7 @@ G.set("a", 1919810)
 
 # ----- load data -----
 assert G.get("a") == 1919810
-assert G.get("a", time_stamp = 0) = 114514
+assert G.get("a", time_stamp = 0) == 114514
 
 # ----- save log -----
 G.log("哼哼哼啊啊啊啊啊") # stdout: 哼哼哼啊啊啊啊啊
