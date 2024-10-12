@@ -5,12 +5,16 @@ from .mydict import MyDict
 
 class MyNamespace(object):
     def __init__(self, mydict: MyDict, splitter: str = "/"):
-        self.__dict__["_mydict"] = MyDict( mydict )
-        self.__dict__["_splitter"] = str( splitter )
+        self._mydict = MyDict( mydict )
+        self._splitter = str( splitter )
 
     @property
     def _value(self):
         return self._mydict.get("")
+    
+    @property
+    def __dict__(self):
+        return dict( self._mydict )
     
     def __getattr__(self, name):
         if name in ["_mydict", "_splitter", "_value"]:
@@ -23,12 +27,17 @@ class MyNamespace(object):
         
         return MyNamespace(sub_d, splitter = self._splitter)
 
-        
     def __setattr__(self, name, value):
-        self._mydict[name] = value
+        if name in ["_mydict", "_splitter", "_value"]:
+            object.__setattr__(self, name, value)
+            return
+        
+        try:
+            getattr(self._value, name)
+            setattr(self._value, name, value)
+        except AttributeError:
+            self._mydict[name] = value
 
-    def to_dict(self):
-        return dict( self._mydict )
 
     def __add__(self, other): return self._value + other
     def __sub__(self, other): return self._value - other
