@@ -27,6 +27,9 @@ class MyNamespace(object):
     def __setattr__(self, name, value):
         self._mydict[name] = value
 
+    def to_dict(self):
+        return dict( self._mydict )
+
     def __add__(self, other): return self._value + other
     def __sub__(self, other): return self._value - other
     def __mul__(self, other): return self._value * other

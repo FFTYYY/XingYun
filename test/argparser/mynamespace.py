@@ -26,6 +26,8 @@ class TestMyNamespace(unittest.TestCase):
         self.assertTrue( C.optim.wd == 5e-5 )
         self.assertTrue( C.no_activation == True )
 
+        print (C.to_dict())
+
     
 if __name__ == "__main__":
     unittest.main()
