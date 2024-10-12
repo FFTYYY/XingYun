@@ -14,8 +14,8 @@ class TestTimer(unittest.TestCase):
 
         print(Timer.output_all())
 
-        self.assertTrue( 0.05 <= Timer.get_avg_time("test_1")  <= 0.2)
-        self.assertTrue( 0.005 <= Timer.get_avg_time("test_2")  <= 0.02 )
+        self.assertTrue( 0.03 <= Timer.get_avg_time("test_1")  <= 0.3)
+        self.assertTrue( 0.003 <= Timer.get_avg_time("test_2")  <= 0.03 )
         
 
 

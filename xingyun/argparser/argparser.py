@@ -2,9 +2,10 @@ import sys
 from typing import Callable, Any
 import re
 import warnings
-from argparse import Namespace
 from ..random.my_random import my_randint
 from ..universal.get_subdict import get_subdict
+from .mynamespace import MyNamespace
+from .mydict import MyDict
 
 class Condition:
     def __init__(self, condition: Callable[[ dict[str, Any] ], bool] = lambda _: True):
@@ -41,16 +42,6 @@ class PreCondition:
     def __exit__(self, *arg, **kwarg):
         condition_env.pop(self.id)
 
-class MyDict(dict):
-    def __init__(self, d: dict = {}):
-        super().__init__(d)
-
-    def sub(self, prefix: str, splitter: str = "/"):
-        return MyDict( get_subdict(self, prefix, splitter) )
-    
-    def __call__(self, prefix: str, splitter: str = "/"):
-        return self.sub(prefix, splitter)
-    
 
 class Argument:
     '''The class that describe an argument.
@@ -101,8 +92,8 @@ class ArgumentParser:
         return [c for id,c in condition_env.items() if c is not None]
     
     @classmethod
-    def get_subconfig(cls, C: dict | Namespace, prefix: str, splitter: str = "/"):
-        if isinstance(C, Namespace):
+    def get_subconfig(cls, C: dict | MyNamespace, prefix: str, splitter: str = "/"):
+        if isinstance(C, MyNamespace):
             C = C.__dict__
         return get_subdict(C,prefix,splitter)
 
@@ -142,8 +133,10 @@ class ArgumentParser:
             args: list[str] | None = None, 
             pattern = r"^--([^=]+)(=(.+)|)$", 
             get_match: Callable[[re.Match], tuple[str,str]] = lambda m: (m.group(1), m.group(3)) , 
-        ) -> Namespace:
-            return Namespace(**self.parse(args, pattern, get_match))
+            splitter: str = "/" , 
+        ) -> MyNamespace:
+            
+            return MyNamespace(self.parse(args, pattern, get_match), splitter = splitter)
     
     def parse(self, 
             args: list[str] | None = None, 
