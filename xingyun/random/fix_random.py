@@ -1,7 +1,7 @@
 import time
 import copy
 import random
-from typing import Any
+from typing import Any, Union
 from xingyun.universal.import_module import my_import_module
 
 from .set_random_seed import RandomAllowedModule
@@ -81,7 +81,7 @@ def set_random_state(state: Any, module: RandomAllowedModule) -> bool:
     return flag
 
 class FixRandom:
-    def __init__(self, random_seed: int | None = None, modules:  list[RandomAllowedModule] = ["random" , "torch" , "numpy"]):
+    def __init__(self, random_seed: Union[int , None] = None, modules:  list[RandomAllowedModule] = ["random" , "torch" , "numpy"]):
         '''This class create a temporary environment, inside which the random seed 
         is set to a given value while not affecting the global random seed.
 

@@ -1,4 +1,4 @@
-from typing import Callable, Any
+from typing import Callable, Any, Union
 from pathlib import PurePosixPath 
 from xingyun.cloud.egorov_awss3 import gets3, sets3
 from xingyun.cloud.egorov_dropbox import getdropbox, setdropbox
@@ -7,7 +7,7 @@ class DataAccess:
     '''This class defines how to access data that is stored remotely.'''
 
     def __init__(self,
-        path: PurePosixPath | str, 
+        path: Union[ PurePosixPath , str ], 
         get_call: Callable[ [str], Any ] , 
         set_call: Callable[ [str, Any], bool ] , 
     ):

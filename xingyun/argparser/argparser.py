@@ -1,5 +1,5 @@
 import sys
-from typing import Callable, Any
+from typing import Callable, Any, Union
 import re
 import warnings
 from ..random.my_random import my_randint
@@ -92,7 +92,7 @@ class ArgumentParser:
         return [c for id,c in condition_env.items() if c is not None]
     
     @classmethod
-    def get_subconfig(cls, C: dict | MyNamespace, prefix: str, splitter: str = "/"):
+    def get_subconfig(cls, C: Union[dict , MyNamespace], prefix: str, splitter: str = "/"):
         if isinstance(C, MyNamespace):
             C = C.__dict__
         return get_subdict(C,prefix,splitter)
@@ -130,7 +130,7 @@ class ArgumentParser:
         self.add_argument(name, bool, False, True, help, verify, aliases)
 
     def parse_namespace(self, 
-            args: list[str] | None = None, 
+            args: Union[ list[str] , None] = None, 
             pattern = r"^--([^=]+)(=(.+)|)$", 
             get_match: Callable[[re.Match], tuple[str,str]] = lambda m: (m.group(1), m.group(3)) , 
             splitter: str = "/" , 
@@ -139,7 +139,7 @@ class ArgumentParser:
             return MyNamespace(self.parse(args, pattern, get_match), splitter = splitter)
     
     def parse(self, 
-            args: list[str] | None = None, 
+            args: Union[list[str] , None] = None, 
             pattern = r"^--([^=]+)(=(.+)|)$", 
             get_match: Callable[[re.Match], tuple[str,str]] = lambda m: (m.group(1), m.group(3)) , 
         ) -> MyDict:

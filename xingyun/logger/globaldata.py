@@ -45,7 +45,7 @@ class GlobalDataManager:
     def __init__(self, 
         name: str , 
         hooks: List[HookType] = [] , 
-        data_access: DataAccess | None = None , 
+        data_access: Union[DataAccess , None] = None , 
         sync_time: int = 50
     ):
         '''
@@ -93,7 +93,7 @@ class GlobalDataManager:
         except:
             warnings.warn("final sync failed.")
 
-    def should_sync(self, sync: bool | None):
+    def should_sync(self, sync: Union[bool , None]):
         ''' Return true one time every `self.sync_time` calls.
         ### Parameters
             - sync: If not `True`, then sync whatever. If not `False`, then don't sync whatever. 
@@ -103,7 +103,7 @@ class GlobalDataManager:
             return self._sync_count == 0
         return sync
 
-    def upload_data(self, keys: list[str] | None = None) -> bool:
+    def upload_data(self, keys: Union[ list[str] , None] = None) -> bool:
         '''Upload data to remote.
         
         ### Parameters
@@ -148,8 +148,8 @@ class GlobalDataManager:
         cmp: Callable[[Any, Any], bool] , 
         modespace: str = DEFAULT_MODESPACE , 
         overwrite: bool = False, 
-        force_timestamp: int | None = None, 
-        sync: bool | None = None
+        force_timestamp: Union[int , None] = None, 
+        sync: Union[bool , None] = None
     ) -> bool:
         '''Set data. But only sets when data is different from stored one.
 
@@ -174,8 +174,8 @@ class GlobalDataManager:
         val: Any, 
         modespace: str = DEFAULT_MODESPACE , 
         overwrite: bool = False, 
-        force_timestamp: int | None = None, 
-        sync: bool | None = None
+        force_timestamp: Union[int , None] = None, 
+        sync: Union[bool , None] = None
     ) -> bool:
         '''Set data. 
 
@@ -221,7 +221,7 @@ class GlobalDataManager:
 
         return flag
     
-    def get(self, key: str, time_stamp: int | None = None):
+    def get(self, key: str, time_stamp: Union[int , None] = None):
         '''Get data. If no data return `None`.
 
         ### Parameters
@@ -247,7 +247,7 @@ class GlobalDataManager:
         return self.data_access.set(key, val)
 
 
-    def log(self, content: str, sync: bool | None = None):
+    def log(self, content: str, sync: Union[ bool , None] = None):
         '''This function save data to logger modespace.'''
         return self.set(type(self).LOGGER_KEY, content, modespace = type(self).LOGGER_MODESPACE, sync = sync)
 
@@ -270,8 +270,8 @@ class GlobalDataManager:
         
     def log_code(self, 
         filters: list[ Callable[[str], bool] ] = [filter_default, filter_gitignore, filter_hidden], 
-        sizelimit : int | str = "1mb" , 
-        total_sizelimit : int | str = "500mb" , 
+        sizelimit : Union[ int , str ] = "1mb" , 
+        total_sizelimit : Union[ int , str ] = "500mb" , 
         path: str = ".", 
     ):
         '''This function log current code. Only update when there is change in code. Returns code version.'''

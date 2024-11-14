@@ -3,14 +3,14 @@
     `{path}`
 '''
 from egorovsystem import get_variable
-from typing import Callable, Any
+from typing import Callable, Any, Union
 from .base import get_aws3_dataacess, DataAccess
 
 _my_default_dataacess = None
 
 def get_id(
     name: str, 
-    data_access: DataAccess | None = None, 
+    data_access: Union[DataAccess , None] = None, 
 ) -> str:
     '''This function ensures every call with the same `path / name` gets a fresh number.
     

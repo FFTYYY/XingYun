@@ -1,10 +1,10 @@
 import random
 import time
-from typing import Literal, TypeAlias, NoReturn, List
+from typing import Literal, TypeAlias, NoReturn, List, Union
 from xingyun.universal.import_module import my_import_module
 
 '''literals that are allowed in the `module` parameter.'''
-RandomAllowedModule: TypeAlias = Literal["torch"] | Literal["numpy"] | Literal["random"] 
+RandomAllowedModule: TypeAlias = Union[ Literal["torch"] , Literal["numpy"] , Literal["random"] ]
 
 def set_module_seed(seed: int , module: RandomAllowedModule):
     '''set random seed of a specific module.'''

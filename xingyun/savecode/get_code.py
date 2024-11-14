@@ -1,6 +1,6 @@
 from pathlib import Path
 import re
-from typing import Callable
+from typing import Callable, Union
 import fnmatch
 from pathlib import PurePosixPath
 from xingyun.universal.convert import convert_size_to_bytes
@@ -30,8 +30,8 @@ def filter_gitignore(filename: str):
 
 def get_code(
         filters: list[ Callable[[str], bool] ] = [filter_default, filter_gitignore, filter_hidden], 
-        sizelimit : int | str = "1mb" , 
-        total_sizelimit  : int | str = "500mb" , 
+        sizelimit : Union[int , str] = "1mb" , 
+        total_sizelimit  : Union[int , str] = "500mb" , 
         path: str = ".", 
     ) -> dict[str, str]:
     '''Get all code files under a dictionary.
@@ -92,7 +92,7 @@ def get_code(
 
     return saved
 
-def compare_dict(dict_1: dict[str, str] | None, dict_2: dict[str, str] | None):
+def compare_dict(dict_1: Union[ dict[str, str] , None], dict_2: Union[ dict[str, str] , None ]):
     '''compare if two str dicts are exactly the same.'''
 
     if (dict_1 is None) or (dict_2 is None):
