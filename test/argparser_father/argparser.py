@@ -97,6 +97,8 @@ class TestArgParser(unittest.TestCase):
         self.assertTrue( C["no_activation"] == False )
 
         CN = self.argp.parse_namespace(argv)
+
+        self.assertTrue( str(CN) == "<xingyun: Arguments>" )
         self.assertTrue( CN.model == "CNN" )
         self.assertTrue( CN.num_layers == 12 )
         self.assertTrue( CN.model.GNN_spec.prop_method == None )

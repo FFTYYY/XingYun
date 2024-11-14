@@ -27,6 +27,7 @@ class TestMyNamespace(unittest.TestCase):
 
         C = MyNamespace(d)
 
+
         self.assertTrue( C.model == "UGNN" )
         self.assertTrue( C.num_layers == 3 )
         self.assertTrue( C.model.GNN_spec.prop_method == "message" )

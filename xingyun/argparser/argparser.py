@@ -230,6 +230,8 @@ class ArgumentParser:
             if name in parsed:
                 parsed[alias] = parsed[name]
 
+        parsed[""] = "<xingyun: Arguments>"
+
         return MyDict(parsed)
 
 
