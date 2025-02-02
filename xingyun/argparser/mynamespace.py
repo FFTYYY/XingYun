@@ -51,7 +51,7 @@ class MyNamespace(object):
     def __and__(self, other): return self._value & other
     def __or__(self, other): return self._value | other
     def __xor__(self, other): return self._value ^ other
-    def __invert__(self): return ~self._value
+    def __invert__(self): return ~self._value # type: ignore
     def __radd__(self, other): return other + self._value
     def __rsub__(self, other): return other - self._value
     def __rmul__(self, other): return other * self._value
