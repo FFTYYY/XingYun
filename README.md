@@ -50,6 +50,6 @@ G = GlobalDataManager("test/1")
 
 # ----- load data from another run -----
 assert G.get("a") == 1919810
-assert G.get("a", time_stamp = 0) = 114514
+assert G.get("a", time_stamp = 0) == 114514
 ```
 
